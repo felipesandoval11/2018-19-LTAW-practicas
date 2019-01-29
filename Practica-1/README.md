@@ -1,3 +1,3 @@
 # Práctica 1
 
-En este repo se colocarán los ficheros de la práctica 1 de LTAW.
+La P1 de LATW.
