@@ -1,0 +1,18 @@
+{
+  "name": "hello",
+  "description": "Proyecto hello world",
+  "keywords": [
+    "ltaw",
+    "test",
+    "nodejs",
+  ],
+  "version": "0.0.1",
+  "author": "Felipe Sandoval (felipesandoval11)",
+  "main": "hello.js",
+  "devDependencies": {},
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipesandoval11/2018-19-LTAW-practicas"
+  }
+}
