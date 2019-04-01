@@ -9,23 +9,19 @@ console.log("Running server...\n")
 
 // Creating a server object
 http.createServer(function (req, res) {
+  var q = url.parse(req.url, true);
+  var filename = "." + q.pathname;
+  console.log('This was the requested doc ' + q.pathname);
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found " + q.pathname +
+                     ' but we will create it.');
+    }
   res.writeHead(200, {'Content-Type': 'text/html'});
-  //res.write('First document solved.') // response for client
-  //res.write(req.url);
-  //res.end('\.'); // end response for client
-  //var q = url.parse(req.url, true).query;
-  //var txt = q.year + " " + q.month;
-  //res.write(txt);
-  //fs.readFile('doc1.html', function(err, data) {
-  //  res.writeHead(200, {'Content-Type': 'text/html'});
-  //  res.write(data);
-  //  res.end();
-  if (req.url == '/adios'){
-    res.write('Petition 1');
-  }else if (req.url == '/hola'){
-    res.write('Petition 2');
-  }else{
-    res.write('Petition 3');
-  }
+  res.write(data);
+  return res.end();
   console.log("Request Solved");
+   });
+
 }).listen(8080);
