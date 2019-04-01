@@ -1,4 +1,3 @@
 # Práctica 1
 
-First practice of LTAW asignature.
-First server and "Hello World".
+Web server for an e-commerce.
