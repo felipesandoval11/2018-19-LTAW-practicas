@@ -1,3 +1,3 @@
 # Práctica 1
 
-Web server for an e-commerce.
+Hello World and Web server for an e-commerce.
