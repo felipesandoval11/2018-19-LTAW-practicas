@@ -19,7 +19,7 @@ http.createServer((req, res) => {
   res.write(data);
   return res.end();
    });
-  console.log('This was the requested doc ' + req.url);
+  console.log('This was the requested page ' + req.url);
   console.log("\nRequest Solved.");
   console.log("\nHOST: " + req.headers.host)
   console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
