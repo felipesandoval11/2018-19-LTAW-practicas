@@ -11,14 +11,6 @@ console.log("Running server...\n")
 http.createServer((req, res) => {
   var q = url.parse(req.url, true);
   var filename = "." + q.pathname;
-  console.log("Pathname: " +  q.pathname)
-  console.log("search: " + q.search)
-  console.log("Búsqueda:")
-  var qdata = q.query
-  console.log(qdata)
-  //-- Acceso al objeto
-  console.log("Artículo: " + qdata.articulo)
-  console.log("Color: " + qdata.color)
   fs.readFile(filename, (err, data) => {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
@@ -30,7 +22,13 @@ http.createServer((req, res) => {
   return res.end();
    });
   console.log('This was the requested page (URL) ' + req.url);
-  console.log(" Request Solved.");
+  console.log("Request Solved.\n");
+  console.log("Pathname: " +  q.pathname);
+  console.log("search: " + q.search);
+  var qdata = q.query;
+  console.log(qdata) // Object access
+  console.log("Article: " + qdata.article);
+  console.log("Color: " + qdata.color);
   console.log("\nHOST: " + req.headers.host)
   console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
 }).listen(8080);
