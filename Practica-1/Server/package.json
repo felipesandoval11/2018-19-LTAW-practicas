@@ -16,6 +16,6 @@
     "url": "https://github.com/felipesandoval11/2018-19-LTAW-practicas"
   },
   "scripts": {
-    "test": "node -v"
+    "test": "node server.js"
   }
 }

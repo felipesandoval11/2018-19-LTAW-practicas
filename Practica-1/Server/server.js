@@ -8,11 +8,8 @@ var fs = require('fs');
 console.log("Running server...\n")
 
 // Creating a server object
-http.createServer(function (req, res) {
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
-  console.log('This was the requested doc ' + q.pathname);
-  fs.readFile(filename, function(err, data) {
+http.createServer((req, res) => {
+  fs.readFile(filename, (err, data) => {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
       return res.end("404 Not Found " + q.pathname +
@@ -21,7 +18,9 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(data);
   return res.end();
-  console.log("Request Solved");
    });
-
+  console.log('This was the requested doc ' + req.url);
+  console.log("\nRequest Solved.");
+  console.log("\nHOST: " + req.headers.host)
+  console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
 }).listen(8080);
