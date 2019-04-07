@@ -11,16 +11,6 @@ console.log("Running server...\n")
 http.createServer((req, res) => {
   var q = url.parse(req.url, true);
   var filename = "." + q.pathname;
-  fs.readFile(filename, (err, data) => {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found " + q.pathname +
-                     ' but we will create it.');
-    }
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(data);
-  return res.end();
-   });
   console.log('This was the requested page (URL) ' + req.url);
   console.log("Request Solved.\n");
   console.log("Pathname: " +  q.pathname);
@@ -31,4 +21,31 @@ http.createServer((req, res) => {
   console.log("Color: " + qdata.color);
   console.log("\nHOST: " + req.headers.host)
   console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
+  console.log('____________END REQUEST____________\n');
+  /*fs.readFile(filename, (err, data) => {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found " + q.pathname +
+                     ' but we will create it.');
+    }
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(data);
+  return res.end();
+});*/
+  var mime = "text/html"
+  res.writeHead(200, {'Content-Type': mime});
+  var msg = `
+            <!DOCTYPE html>
+            <html lang="es" dir="ltr">
+              <head>
+                <meta charset="utf-8">
+                <title>Mi tienda</title>
+              </head>
+              <body>
+                <p> ¡BIENVENIDO A MI TIENDA! </p>
+              </body>
+            </html>
+           `
+ res.write(msg);
+ res.end();
 }).listen(8080);
