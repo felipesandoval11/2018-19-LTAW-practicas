@@ -23,6 +23,22 @@ body {
   margin-right: auto;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-family: Helvetica;
+  text-align: center;
+}
+
+img#icon {
+  width: 2.3%;
+  align-content: space-between;
+}
+
 img#vert {
   width: 70%;
   height: auto;
