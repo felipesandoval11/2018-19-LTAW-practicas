@@ -38,17 +38,38 @@ div.sticky {
   margin-right: auto;
 }
 
+div.DescriptionItem {
+  font-family: title;
+  color: black;
+  text-align: center;
+}
+
+img.productItem{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 28%;
+}
+
 p#footer {
   bottom: 0;
   text-align: center;
   font-family: titleSpecial
 }
 
-img#ecom {
-  position:static;
-  top: -15px;
-  float:left;
+img.ecom {
+  position: absolute;
+  top: 8%;
+  right: 10%;
   width: 5%;
+}
+
+img#ecom1 {
+  padding-right: 20%;
+}
+
+img#ecom2 {
+  padding-right: 10%;
 }
 
 img#icon {
@@ -70,10 +91,10 @@ img#sq {
 }
 
 h1#mainTitle{
-    font-family: titleSpecial;
-    color: white;
-    text-align: center;
-    padding-right: 40px;
+  font-family: titleSpecial;
+  color: white;
+  text-align: center;
+  padding-right: 40px;
 }
 
 p#Description {
@@ -84,6 +105,15 @@ p#Description {
 
 table{
  padding-bottom: 20px;
+}
+a.AddCart:hover{
+  color: BLUE;
+  font-size: 140%;
+}
+
+a.AddCart:active {
+ color: purple;
+ font-size: 140%;
 }
 
 a:link {
