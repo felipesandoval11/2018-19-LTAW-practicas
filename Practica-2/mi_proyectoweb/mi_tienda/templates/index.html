@@ -6,9 +6,12 @@
     <meta charset="utf-8">
     <title>MI TIENDA</title>
     <link rel="stylesheet" href="{% static 'mi-css.css'%}">
+     <script src="{% static 'mi-js.js' %}"></script>
   </head>
-  <body>
-    <p>BIENVENIDO A MI TIENDA con estilo</p>
-    <img src="/static/logo-urjc.png" alt="NOPE">
+  <body onload="main();">
+    <p>BIENVENIDO A MI TIENDA con estilo y js</p>
+    <img src="/static/logo-urjc.png" alt="NOPE" id="logo">
+    <br>
+    <button type="button" id="boton">Click me</button>
   </body>
 </html>
