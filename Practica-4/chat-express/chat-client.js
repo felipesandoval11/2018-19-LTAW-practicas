@@ -1,7 +1,12 @@
+/*  CHAT CLIENT for LTAW.
+    Made by Felipe Sandoval.
+*/
+
 function main() {
   console.log("Hola!!!!-------------")
 
   //-- Crear el websocket
+
   var socket = io();
 
   //-- Obtener los elementos de interfaz:

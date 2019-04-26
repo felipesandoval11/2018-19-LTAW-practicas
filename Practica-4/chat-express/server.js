@@ -1,3 +1,7 @@
+/*  CHAT SERVER for LTAW.
+    Made by Felipe Sandoval.
+*/
+
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -5,18 +9,28 @@ var io = require('socket.io')(http);
 //--Servir la pagina principal
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
-  console.log("Página principal: /")
+  console.log("/: Showing index to user.");
+  console.log("___________\n");
 });
 
-app.get('/help', (req, res) => {
-  res.send('WOALA!!! Chuck norris approved!!! :-)')
-  console.log("Acceso a /woala")
+app.get('/hello', (req, res) => {
+  res.sendFile(__dirname + '/hello.html');
+  console.log("HELLO: Salute to client.");
+  console.log("___________\n");
 })
 
-//-- Servir el cliente javascript
+//  Get the chat_client JS
 app.get('/chat-client.js', function(req, res){
   res.sendFile(__dirname + '/chat-client.js');
-  console.log("Fichero js solicituado")
+  console.log("JS requested");
+});
+
+//  Get the CSS for CHAT
+app.get('/css/micss.css', function(req, res){
+  res.sendFile(__dirname + '/css/micss.css');
+  res.sendFile(__dirname + '/css/Hasthon.ttf');
+  res.sendFile(__dirname + '/css/futurist.TTF');
+  console.log("CSS requested");
 });
 
 //-- Lanzar el servidor

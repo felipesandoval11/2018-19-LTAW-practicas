@@ -1,15 +1,27 @@
+<!--  CHAT for LTAW.
+      Made by Felipe Sandoval.
+-->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>MI CHAT</title>
+    <title> CHAT ONLINE </title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat-client.js"></script>
+    <link rel="stylesheet" href="/css/micss.css">
   </head>
   <body onload="main();">
-    <p>Plantilla para mi chat....</p>
+    <h1 id="mainTitle"> Welcome To the Chat! </h1>
     <input id="msg" autocomplete="off" />
     <button type="button" id="send">SEND</button>
+
     <p id="display"></p>
+
+    <p id="footer">
+      <a href="https://github.com/felipesandoval11">
+          © Felipe Sandoval
+      </a>
+    </p>
   </body>
 </html>
