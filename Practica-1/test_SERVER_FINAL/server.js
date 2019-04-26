@@ -60,7 +60,6 @@ http.createServer((req, res) => {
 // for css
   if (type == "css"){
     mime = "text/css";
-    console.log("SI ENTROOO");
   }
 
   res.writeHead(200, {'Content-Type': mime});
