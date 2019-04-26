@@ -44,7 +44,7 @@ http.listen(PORT, function(){
 //  Handling events.
 io.on('connection', function(socket){
   console.log('--> New user connected!');
-
+  io.emit('Welcome', 'Welcome new user');
   //  Knowing if a user disconnects from the chat
   socket.on('disconnect', function(){
     console.log('--> User disconnected!');

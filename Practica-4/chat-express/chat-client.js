@@ -3,10 +3,7 @@
 */
 
 function main() {
-  console.log("Hola!!!!-------------")
-
-  //-- Crear el websocket
-
+  // Creating WEB SOCKET
   var socket = io();
 
   //-- Obtener los elementos de interfaz:
@@ -30,8 +27,11 @@ function main() {
     console.log("Mensaje emitido")
   }
 
-  //-- Cuando se reciba un mensaje del servidor se muestra
-  //-- en el párrafo
+//  Handling events.
+  socket.on('Welcome', msg => {
+    display.innerHTML = msg;
+  });
+
   socket.on('new_message', msg => {
     display.innerHTML = msg;
   });
