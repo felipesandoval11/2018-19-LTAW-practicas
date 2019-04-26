@@ -1,22 +1,44 @@
-const express = require('express')
-const app = express()
-const http = require('http').Server(app);
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-//-- Puerto donde lanzar el servidor
-const PORT = 3000
-
-//-- Punto de entrada pricipal
-app.get('/', (req, res) => {
+//--Servir la pagina principal
+app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
-  console.log("/index.html")
-})
+  console.log("Página principal: /")
+});
 
 app.get('/help', (req, res) => {
   res.send('WOALA!!! Chuck norris approved!!! :-)')
   console.log("Acceso a /woala")
 })
 
-//-- Lanzar servidor
-http.listen(PORT, function(){
-  console.log('Servidor lanzado en puerto ' + PORT);
+//-- Servir el cliente javascript
+app.get('/chat-client.js', function(req, res){
+  res.sendFile(__dirname + '/chat-client.js');
+  console.log("Fichero js solicituado")
+});
+
+//-- Lanzar el servidor
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+
+//-- Evento: Nueva conexion recibida
+//-- Un nuevo cliente se ha conectado!
+io.on('connection', function(socket){
+  console.log('--> Usuario conectado!');
+
+  //-- Detectar si el usuario se ha desconectado
+  socket.on('disconnect', function(){
+    console.log('--> Usuario Desconectado');
+  });
+
+  //-- Detectar si se ha recibido un mensaje del cliente
+   socket.on('new_message', msg => {
+
+   //-- Notificarlo en la consola del servidor
+   console.log("Mensaje recibido: " + msg)
+ });
+
 });
