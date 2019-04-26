@@ -35,10 +35,12 @@ io.on('connection', function(socket){
   });
 
   //-- Detectar si se ha recibido un mensaje del cliente
-   socket.on('new_message', msg => {
+  socket.on('new_message', msg => {
 
-   //-- Notificarlo en la consola del servidor
-   console.log("Mensaje recibido: " + msg)
- });
+    //-- Notificarlo en la consola del servidor
+    console.log("Mensaje recibido: " + msg)
 
+    //-- Emitir un mensaje a todos los clientes conectados
+    io.emit('new_message', msg);
+  })
 });
