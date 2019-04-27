@@ -32,6 +32,7 @@ app.get('/css/micss.css', function(req, res){
 //  Lauching Server
 http.listen(PORT, function(){
   console.log('Listening on *:3000');
+  console.log("___________");
 });
 
 //  Handling events.
@@ -48,9 +49,22 @@ io.on('connection', function(socket){
   socket.on('new_message', msg => {
     console.log("MESSAGE RECEIVED: " + msg)
     if(msg == "/help"){
-      io.emit('new_message', 'SERVER: Accepted commands\n\n'
-                            + "/help /list /hello /date");
-      console.log('--> Sending help to one user.');
+      var ans = "SERVER:    /help = Show commands.   /list = Show how many users are connected.\n"
+              + "/hello = I salute to you. /date = I show you the date.\n"
+      socket.emit('new_message', ans);
+      console.log('--> Sending help to an user.');
+    }else if (msg == "/list") {
+      var ans = "SERVER: Are __ connected users."
+      socket.emit('new_message', ans);
+      console.log('--> Sending list of connected users.');
+    }else if (msg == "/hello") {
+      var ans = "SERVER: Hello user! I'm the server.\n"
+      socket.emit('new_message', ans);
+      console.log('--> Sending a salute to an user.');
+    }else if (msg == "/date") {
+      var ans = "SERVER: DATEE\n"
+      socket.emit('new_message', ans);
+      console.log('--> Sending date to an user.');
     }else{
       //  that message is shown to all my clients
       io.emit('new_message', msg);

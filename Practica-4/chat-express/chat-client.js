@@ -6,7 +6,6 @@ function main() {
   // Creating WEB SOCKET
   var socket = io();
   var welcomed = false;
-  var help_me = false;
   var recieving = false;
   //-- Obtener los elementos de interfaz:
 
@@ -21,15 +20,6 @@ function main() {
 
   //-- Cuando se aprieta el botón de enviar...
   send.onclick = () => {
-    switch (msg.value) {
-      case "/help":
-        help_me = true;
-        break;
-      case '/list':
-        alert("ayuda solicitada");
-        break;
-    }
-
     //  Sending message with event NEW_MESSAGE
     recieving = true;
     socket.emit('new_message', msg.value);
@@ -46,7 +36,6 @@ function main() {
   });
 
   socket.on('new_message', msg => {
-    document.getElementById("display").style.color = "black";
     if(!recieving){
       recieving = true;
     }else{

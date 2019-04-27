@@ -2,16 +2,6 @@
     Made by Felipe Sandoval.
 */
 
-@font-face {
-  font-family: title;
-  src: url("futurist.TTF");
-}
-
-@font-face {
-  font-family: titleSpecial;
-  src: url("Hasthon.ttf");
-}
-
 html {
   height: 100%;
 }
@@ -23,13 +13,11 @@ body {
 }
 
 h1#mainTitle{
-  font-family: titleSpecial;
   color: black;
   text-align: center;
 }
 
 p#Description {
-  font-family: title;
   color: black;
   text-align: center;
 }
@@ -67,7 +55,8 @@ button#send{
 
 textarea#display{
   position: fixed;
-  color: blue;
+  background: black;
+  color: white;
   top: 40%;
   right: 6%;
   text-align: center;
@@ -79,7 +68,6 @@ p#footer {
   top: 90%;
   right: 50%;
   text-align: center;
-  font-family: titleSpecial
 }
 
 a:link {
