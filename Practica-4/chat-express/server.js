@@ -5,7 +5,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
+var clients = 0;
 const PORT = 3000;
 
 //  Get the index of my CHAT
@@ -45,11 +45,13 @@ function getDate(){
 
 //  Handling events.
 io.on('connection', function(socket){
+  clients += 1;
   console.log('--> New user connected!');
   io.emit('Welcome', 'SERVER: Welcome new user!\n');
   io.emit('new_message', 'SERVER: New user joined the chat!\n');
   //  Knowing if a user disconnects from the chat
   socket.on('disconnect', function(){
+    clients -= 1;
     console.log('--> User disconnected!');
   });
 
@@ -62,7 +64,7 @@ io.on('connection', function(socket){
       socket.emit('new_message', ans);
       console.log('--> Sending help to an user.');
     }else if (msg == "/list") {
-      var ans = "SERVER: Are __ connected users."
+      var ans = "SERVER: " + clients + " connected users.";
       socket.emit('new_message', ans);
       console.log('--> Sending list of connected users.');
     }else if (msg == "/hello") {
