@@ -35,6 +35,14 @@ http.listen(PORT, function(){
   console.log("___________");
 });
 
+function getDate(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  return today = dd + '/' + mm + '/' + yyyy;
+}
+
 //  Handling events.
 io.on('connection', function(socket){
   console.log('--> New user connected!');
@@ -62,7 +70,8 @@ io.on('connection', function(socket){
       socket.emit('new_message', ans);
       console.log('--> Sending a salute to an user.');
     }else if (msg == "/date") {
-      var ans = "SERVER: DATEE\n"
+      var today = getDate();
+      var ans = "SERVER: Today is " + today + "\n";
       socket.emit('new_message', ans);
       console.log('--> Sending date to an user.');
     }else{
