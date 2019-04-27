@@ -15,13 +15,6 @@ app.get('/', function(req, res){
   console.log("___________\n");
 });
 
-//  Get the hello html
-app.get('/hello', (req, res) => {
-  res.sendFile(__dirname + '/hello.html');
-  console.log("HELLO: Salute to client.");
-  console.log("___________\n");
-})
-
 //  Get the chat_client JS
 app.get('/chat-client.js', function(req, res){
   res.sendFile(__dirname + '/chat-client.js');
@@ -44,7 +37,8 @@ http.listen(PORT, function(){
 //  Handling events.
 io.on('connection', function(socket){
   console.log('--> New user connected!');
-  io.emit('Welcome', 'Welcome new user');
+  io.emit('Welcome', 'SERVER: Welcome new user!\n');
+  io.emit('new_message', 'SERVER: New user joined the chat!\n');
   //  Knowing if a user disconnects from the chat
   socket.on('disconnect', function(){
     console.log('--> User disconnected!');
@@ -53,7 +47,13 @@ io.on('connection', function(socket){
   // If a message from a client is RECEIVED
   socket.on('new_message', msg => {
     console.log("MESSAGE RECEIVED: " + msg)
-    //  that message is shown to all my clients
-    io.emit('new_message', msg);
+    if(msg == "/help"){
+      io.emit('new_message', 'SERVER: Accepted commands\n\n'
+                            + "/help /list /hello /date");
+      console.log('--> Sending help to one user.');
+    }else{
+      //  that message is shown to all my clients
+      io.emit('new_message', msg);
+    }
   })
 });

@@ -5,7 +5,9 @@
 function main() {
   // Creating WEB SOCKET
   var socket = io();
-
+  var welcomed = false;
+  var help_me = false;
+  var recieving = false;
   //-- Obtener los elementos de interfaz:
 
   //-- Boton de envio de mensaje
@@ -19,20 +21,37 @@ function main() {
 
   //-- Cuando se aprieta el botón de enviar...
   send.onclick = () => {
+    switch (msg.value) {
+      case "/help":
+        help_me = true;
+        break;
+      case '/list':
+        alert("ayuda solicitada");
+        break;
+    }
 
-    //-- Enviar el mensaje, con el evento "new_message"
+    //  Sending message with event NEW_MESSAGE
+    recieving = true;
     socket.emit('new_message', msg.value);
-
-    //-- Lo notificamos en la consola del navegador
-    console.log("Mensaje emitido")
+    console.log("Message sent.")
   }
 
-//  Handling events.
-  socket.on('Welcome', msg => {
-    display.innerHTML = msg;
+//  Handling events. RECEIVED messages from server.
+  socket.on('Welcome', wel => {
+    if (!welcomed) {  // if is an old client I DON'T sent the salute from server
+      display.innerHTML += wel;
+      display.innerHTML += ("\n");
+      welcomed = true;
+    }
   });
 
   socket.on('new_message', msg => {
-    display.innerHTML = msg;
+    document.getElementById("display").style.color = "black";
+    if(!recieving){
+      recieving = true;
+    }else{
+      display.innerHTML += msg;
+      display.innerHTML += ("\n");
+    }
   });
 }
