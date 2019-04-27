@@ -18,12 +18,18 @@ function main() {
   //-- Caja con el mensaje a enviar
   var msg = document.getElementById("msg")
 
-  //-- Cuando se aprieta el botón de enviar...
+msg.addEventListener('keypress', function (e) {
+    if (e.keyCode === 13) { // 13 is enter
+      socket.emit('new_message', msg.value);
+      console.log("Message sent.");
+    }
+});
+
   send.onclick = () => {
     //  Sending message with event NEW_MESSAGE
     recieving = true;
     socket.emit('new_message', msg.value);
-    console.log("Message sent.")
+    console.log("Message sent.");
   }
 
 //  Handling events. RECEIVED messages from server.
