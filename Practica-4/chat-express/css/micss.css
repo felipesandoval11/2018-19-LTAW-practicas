@@ -45,9 +45,7 @@ input#msg:focus {
 
 
 button#send{
-  position: fixed;
-  top: 30%;
-  right: 50%;
+  align-items: center;
   background-color: #e62739;
   border: none;
   color: black;
@@ -61,14 +59,13 @@ button#send{
 }
 
 textarea#display{
-  position: fixed;
+  align-items: center;
   background: #22264b;
   color: #e8edf3;
-  top: 45%;
-  right: 9%;
-  width: 80%;
+  width: 84%;
   text-align: center;
   font-size: 18px;
+  border: 4px solid #e62739;
 }
 
 p#footer {
