@@ -29,6 +29,20 @@ app.get('/css/micss.css', function(req, res){
   console.log("___________\n");
 });
 
+//  Get the fonts for CHAT
+app.get('/css/Hasthon.ttf', function(req, res){
+  res.sendFile(__dirname + '/css/Hasthon.ttf');
+  console.log("FONT requested");
+  console.log("___________\n");
+});
+
+app.get('/css/futurist.TTF', function(req, res){
+  res.sendFile(__dirname + '/css/futurist.TTF');
+  console.log("FONT requested");
+  console.log("___________\n");
+});
+
+
 //  Lauching Server
 http.listen(PORT, function(){
   console.log('Listening on *:3000');

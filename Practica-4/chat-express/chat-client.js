@@ -5,6 +5,9 @@
 function main() {
   // Creating WEB SOCKET
   var user = prompt("Please enter your user:");
+  while (user == null || user == ""){
+    user = prompt("You need a username. Write one:");
+  };
   var socket = io();
   var welcomed = false;
   var recieving = false;
@@ -14,6 +17,8 @@ function main() {
   var display = document.getElementById('display')
 
   var msg = document.getElementById("msg")
+  var title = document.getElementById("user");
+  title.innerHTML = user;
 
   msg.addEventListener('keypress', function (e) {
       if (e.keyCode === 13) { // 13 is enter
