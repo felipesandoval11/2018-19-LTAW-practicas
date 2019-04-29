@@ -54,7 +54,7 @@ img.productItem{
 p#footer {
   bottom: 0;
   text-align: center;
-  font-family: titleSpecial
+  font-family: titleSpecial;
 }
 
 img.ecom {
@@ -101,6 +101,11 @@ p#Description {
   font-family: title;
   color: black;
   text-align: center;
+}
+
+span#user{
+  color: red;
+  text-transform: uppercase;
 }
 
 table{
