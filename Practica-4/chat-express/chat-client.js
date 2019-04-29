@@ -4,32 +4,35 @@
 
 function main() {
   // Creating WEB SOCKET
+  var user = prompt("Please enter your user:");
   var socket = io();
   var welcomed = false;
   var recieving = false;
-  //-- Obtener los elementos de interfaz:
 
-  //-- Boton de envio de mensaje
   var send = document.getElementById('send')
 
-  //-- Parrafo para mostrar mensajes recibidos
   var display = document.getElementById('display')
 
-  //-- Caja con el mensaje a enviar
   var msg = document.getElementById("msg")
 
-msg.addEventListener('keypress', function (e) {
-    if (e.keyCode === 13) { // 13 is enter
-      socket.emit('new_message', msg.value);
-      console.log("Message sent.");
-    }
-});
+  msg.addEventListener('keypress', function (e) {
+      if (e.keyCode === 13) { // 13 is enter
+        if (msg.value != ""){
+          socket.emit('new_message', user + ": " + msg.value);
+          console.log("Message sent.");
+          msg.value = "";
+        }
+      }
+  });
 
   send.onclick = () => {
-    //  Sending message with event NEW_MESSAGE
-    recieving = true;
-    socket.emit('new_message', msg.value);
-    console.log("Message sent.");
+//  Sending message with event NEW_MESSAGE
+    if (msg.value != ""){
+      recieving = true;
+      socket.emit('new_message', user + ": " + msg.value);
+      console.log("Message sent.");
+      msg.value = "";
+    }
   }
 
 //  Handling events. RECEIVED messages from server.

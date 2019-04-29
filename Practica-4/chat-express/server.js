@@ -57,23 +57,26 @@ io.on('connection', function(socket){
 
   // If a message from a client is RECEIVED
   socket.on('new_message', msg => {
-    console.log("MESSAGE RECEIVED: " + msg)
-    if(msg == "/help"){
+    console.log("MESSAGE RECEIVED: " + msg);
+    var msg_user =  msg.split(": ")[0];
+    console.log(msg_user)
+    var msg_txt = msg.split(": ")[1];
+    if(msg_txt == "/help"){
       var ans = "SERVER:    /help = Show commands.   /list = Show how many users are connected.\n"
               + "/hello = I salute to you. /date = I show you the date.\n"
       socket.emit('new_message', ans);
       console.log('--> Sending help to an user.');
-    }else if (msg == "/list") {
-      var ans = "SERVER: " + clients + " connected users.";
+    }else if (msg_txt == "/list") {
+      var ans = "SERVER: " + clients + " connected users.\n"
       socket.emit('new_message', ans);
       console.log('--> Sending list of connected users.');
-    }else if (msg == "/hello") {
-      var ans = "SERVER: Hello user! I'm the server.\n"
+    }else if (msg_txt == "/hello") {
+      var ans = "SERVER: Hello " + msg_user + "! I'm the server.\n"
       socket.emit('new_message', ans);
       console.log('--> Sending a salute to an user.');
-    }else if (msg == "/date") {
+    }else if (msg_txt == "/date") {
       var today = getDate();
-      var ans = "SERVER: Today is " + today + "\n";
+      var ans = "SERVER: Today is " + today + "\n"
       socket.emit('new_message', ans);
       console.log('--> Sending date to an user.');
     }else{
