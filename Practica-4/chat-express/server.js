@@ -73,7 +73,6 @@ io.on('connection', function(socket){
   socket.on('new_message', msg => {
     console.log("MESSAGE RECEIVED: " + msg);
     var msg_user =  msg.split(": ")[0];
-    console.log(msg_user)
     var msg_txt = msg.split(": ")[1];
     if(msg_txt == "/help"){
       var ans = "SERVER:    /help = Show commands.   /list = Show how many users are connected.\n"
