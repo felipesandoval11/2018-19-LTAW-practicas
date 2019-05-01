@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
 
-const PORT = 8080
+const PORT = 8000
 
 console.log("Arrancando servidor en puerto " + PORT)
 
@@ -43,6 +43,7 @@ http.createServer((req, res) => {
 
       //-- ESTABLECER LA COOKIE!!
       res.setHeader('Set-Cookie', 'user=obijuan')
+      console.log(req.headers.cookie);
       break
 
     //-- Se intenta acceder a un recurso que no existe
