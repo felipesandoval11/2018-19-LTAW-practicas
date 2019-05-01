@@ -4,9 +4,9 @@
 
 function main() {
   // Creating WEB SOCKET
-  //var socket = io();
-  const io = require('socket.io-client');
-  const socket = io('http://localhost:3000');
+  var socket = io();
+  //const io = require('socket.io-client');
+  //const socket = io('http://localhost:3000');
   var welcomed = false;
   var recieving = false;
 

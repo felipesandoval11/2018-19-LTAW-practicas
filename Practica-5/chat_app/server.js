@@ -16,7 +16,7 @@ app.get('/', function(req, res){
 
 //  Get the chat_client JS
 app.get('/app.js', function(req, res){
-  res.sendFile(__dirname + '/app.js');
+  res.sendFile(__dirname + '/main.js');
   console.log("JS requested");
   console.log("___________\n");
 });
