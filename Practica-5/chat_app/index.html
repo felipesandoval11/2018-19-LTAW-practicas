@@ -7,18 +7,16 @@
   <head>
     <meta charset="utf-8">
     <title> CHAT ONLINE </title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="main.js"></script>
+    <script src="app.js"></script>
     <link rel="stylesheet" href="css/micss.css">
   </head>
   <body onload="main();">
     <h1 id="mainTitle"> WELCOME TO THE CHAT! </h1>
-    <input id="msg" autocomplete="off" />
-    <button type="button" id="send"> SEND </button>
     <form>
       <textarea id="display" rows="20" cols="100" readonly></textarea>
     </form>
-
+    <input id="msg" autocomplete="off" />
+    <button type="button" id="send"> SEND </button>
     <p id="footer">
       <a href="https://github.com/felipesandoval11">
           © Felipe Sandoval

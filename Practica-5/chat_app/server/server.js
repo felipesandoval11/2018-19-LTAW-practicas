@@ -2,8 +2,8 @@
     Made by Felipe Sandoval.
 */
 
-var app = require('express')();
-var http = require('http').Server(app);
+const app = require('express')();
+const http = require('http').Server(app);
 var io = require('socket.io')(http);
 var clients = 0;
 
@@ -11,13 +11,6 @@ var clients = 0;
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
   console.log("/: Showing index to user.");
-  console.log("___________\n");
-});
-
-//  Get the chat_client JS
-app.get('/app.js', function(req, res){
-  res.sendFile(__dirname + '/main.js');
-  console.log("JS requested");
   console.log("___________\n");
 });
 
@@ -60,7 +53,7 @@ function getDate(){
 io.on('connection', function(socket){
   clients += 1;
   console.log('--> New user connected!');
-  io.emit('Welcome', 'SERVER: Welcome new user!\n');
+  socket.emit('Welcome', 'SERVER: Welcome new user!\n');
   io.emit('new_message', 'SERVER: New user joined the chat!\n');
   //  Knowing if a user disconnects from the chat
   socket.on('disconnect', function(){

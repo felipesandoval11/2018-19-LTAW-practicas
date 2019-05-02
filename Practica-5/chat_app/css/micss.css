@@ -30,6 +30,7 @@ h1#mainTitle{
 }
 
 input#msg{
+  padding-top: 10%;
   align-items: center;
   width: 80%;
   padding: 12px 20px;
@@ -40,7 +41,7 @@ input#msg{
 }
 
 input#msg:focus {
-  border: 4px solid lightgreen;
+  border: 4px solid gray;
 }
 
 

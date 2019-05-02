@@ -1,4 +1,5 @@
 const electron = require('electron');
+var ipcMain = electron.ipcMain;
 const io = require('socket.io-client');
 const socket = io('http://localhost:3000');
 
@@ -10,59 +11,38 @@ electron.app.on('ready', ()=>{
 
   // Creating UI
   win = new electron.BrowserWindow({
-    width: 600,
-    height: 400
+    width: 1200,
+    height: 900
   })
 
-  win.loadFile('index.html')
-})
+  win.loadFile('index.html');
 
-function main() {
-  // Creating WEB SOCKET
-  var welcomed = false;
-  var recieving = false;
+  win.on('close', function() { //   <---- Catch close event
+    console.log("Closing electron...")
+    win.removeAllListeners('close');
+ });
 
-  var send = document.getElementById('send')
+ win.webContents.once('dom-ready', () => {
 
-  var display = document.getElementById('display')
+  const socket = io('http://localhost:3000');
 
-  var msg = document.getElementById("msg")
+  socket.on('server_message', msg =>{                      //on server message
+  //ipcMain.send('new_message', msg);
+    console.log(msg)
+    win.webContents.send('server_message', msg);
 
-  msg.addEventListener('keypress', function (e) {
-      if (e.keyCode === 13) { // 13 is enter
-        if (msg.value != ""){
-          socket.emit('new_message', msg.value);
-          console.log("Message sent.");
-          msg.value = "";
-        }
-      }
-  });
-
-  send.onclick = () => {
-//  Sending message with event NEW_MESSAGE
-    if (msg.value != ""){
-      recieving = true;
-      socket.emit('new_message', msg.value);
-      console.log("Message sent.");
-      msg.value = "";
-    }
-  }
-
-//  Handling events. RECEIVED messages from server.
-  socket.on('Welcome', wel => {
-    if (!welcomed) {  // if is an old client I DON'T sent the salute from server
-      display.innerHTML += wel;
-      display.innerHTML += ("\n");
-      welcomed = true;
-    }
   });
 
   socket.on('new_message', msg => {
-    if(!recieving){
-      recieving = true;
-    }else{
-      display.innerHTML += msg;
-      display.innerHTML += ("\n");
-    }
+  //when a new message is received, print it in display element
+  //ipcMain.send('new_message', msg);
+    win.webContents.send('new_message', msg);
   });
-}
+
+  ipcMain.on('send_chat_msg', (event,payload) =>{
+    socket.emit('new_message', payload);
+  });
+
+  });
+
+});
