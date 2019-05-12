@@ -39,11 +39,14 @@ http.createServer((req, res) => {
 
       if (q.pathname == '/login.html'){
         // CREATING COOKIE!
-        //res.setHeader('Set-Cookie', 'user=obijuan')
-        //console.log(req.headers.cookie);
-        console.log("CREO LA COOKIE");
+        res.setHeader('Set-Cookie', 'user=Felipe')
+        console.log(req.headers.cookie);
+        console.log("Cookie Created");
+      }else if (q.pathname == '/cart.html'){
+        if (!cookie) {
+          filename = "./error.html";
+        }
       }
-
       break
     case "png":
     case "jpg":
