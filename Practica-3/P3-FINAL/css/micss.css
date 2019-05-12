@@ -103,6 +103,13 @@ p#Description {
   text-align: center;
 }
 
+div.log{
+  font-size: 140%;
+  font-family: title;
+  color: black;
+  text-align: center;
+}
+
 span#user{
   color: red;
   text-transform: uppercase;

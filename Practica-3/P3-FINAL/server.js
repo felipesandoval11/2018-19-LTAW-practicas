@@ -1,4 +1,4 @@
-// First Practice in LTAW
+// Third Practice in LTAW
 // Made by Felipe Sandoval.
 
 var http = require('http');
@@ -13,58 +13,58 @@ http.createServer((req, res) => {
   var filename = "." + q.pathname;
   console.log('____________NEW REQUEST____________\n');
   console.log('This was the requested page (URL) ' + req.url);
-  console.log("Request Solved.\n");
-  console.log("Pathname: " +  q.pathname);
-
-// if not search is included I don't return nothing
-  if(q.search != null){
-    console.log("search: " + q.search);
-    var qdata = q.query;
-    console.log(qdata) // Object access
-    console.log("Article: " + qdata.article);
-    console.log("Color: " + qdata.color);
+  //console.log("\nHOST: " + req.headers.host);
+  //console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
+  // creating generic index
+  if (q.pathname == "/"){
+    filename = "./index.html";
   }
-
-  console.log("\nHOST: " + req.headers.host);
-  console.log("\nUSER AGENT: " + req.headers['user-agent'] + '\n')
-
-// creating generic index
-  var filename = ""
-  if (q.pathname == "/")
-    filename += "/index.html";
-  else {
-    filename = q.pathname;
-  }
-
-  type = filename.split(".")[1]
-  filename = "." + filename
-
+  var type = filename.split(".")[2];
   console.log("Filename: " + filename);
   console.log("Type: " + type);
 
   var mime = "text/html"
+  switch (type) {
+    //-- Pagina principal
+    case "html":
+      //-- Leer las cookies
+      var cookie = req.headers.cookie;
+      console.log("Cookie: " + cookie);
+
+      if (!cookie) {
+        console.log("No hay cookies aún.");
+      } else {
+        console.log("Ya hay cookies");
+      }
+
+      if (q.pathname == '/login.html'){
+        // CREATING COOKIE!
+        //res.setHeader('Set-Cookie', 'user=obijuan')
+        //console.log(req.headers.cookie);
+        console.log("CREO LA COOKIE");
+      }
+
+      break
+    case "png":
+    case "jpg":
+      mime = "image/" + type;
+      console.log("LOADING IMAGE");
+      break
+    case "css":
+      mime = "text/css";
+      console.log("LOADING CSS")
+      break
+  }
   fs.readFile(filename, (err, data) => {
     if (err) {
       res.writeHead(404, {'Content-Type': mime});
       return res.end("404 Not Found " + q.pathname +
-                     ' but we will create it.');
+                     'please go to /index.html');
     }
-
-// default mime type
-  var mime = "text/html"
-// for images
-  if (['png', 'jpg'].includes(type)) {
-    console.log("LOADING IMAGE")
-    mime = "image/" + type;
-  }
-// for css
-  if (type == "css"){
-    mime = "text/css";
-  }
-
   res.writeHead(200, {'Content-Type': mime});
   res.write(data);
   res.end();
+  console.log('Request Solved.')
   console.log('____________END REQUEST____________\n');
 });
 }).listen(8080);
