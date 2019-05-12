@@ -30,23 +30,70 @@ http.createServer((req, res) => {
       //-- Leer las cookies
       var cookie = req.headers.cookie;
       console.log("Cookie: " + cookie);
-
-      if (!cookie) {
-        console.log("No hay cookies aún.");
-      } else {
-        console.log("Ya hay cookies");
-      }
-
-      if (q.pathname == '/login.html'){
+      var pathname = q.pathname;
+      if (pathname == '/login.html'){
         // CREATING COOKIE!
         res.setHeader('Set-Cookie', 'user=Felipe')
         console.log(req.headers.cookie);
         console.log("Cookie Created");
-      }else if (q.pathname == '/cart.html'){
+      }else if (pathname == '/cart.html'){
         if (!cookie) {
           filename = "./error.html";
         }
       }
+
+      switch (pathname) {
+        case "/buy1.html":
+          filename = "./index.html";
+          console.log("1");
+          break;
+        case "/buy2.html":
+          filename = "./index.html";
+          console.log("2");
+          break;
+        case "/buy3.html":
+          filename = "./index.html";
+          console.log("3");
+          break;
+        case "/buy4.html":
+          filename = "./index.html";
+          break;
+        case "/buy5.html":
+          filename = "./index.html";
+          console.log("5");
+          break;
+        case "/buy6.html":
+          filename = "./index.html";
+          console.log("6");
+          break;
+        case "/buy7.html":
+          filename = "./index.html";
+          console.log("7");
+          break;
+        case "/buy8.html":
+          filename = "./index.html";
+          console.log("8");
+          break;
+        case "/buy9.html":
+          filename = "./index.html";
+          console.log("9");
+          break;
+        case "/buy10.html":
+          filename = "./index.html";
+          console.log("10");
+          break;
+        case "/buy11.html":
+          filename = "./index.html";
+          console.log("11");
+          break;
+        case "/buy12.html":
+          filename = "./index.html";
+          console.log("12");
+          break;
+        default:
+          break;
+      }
+
       break
     case "png":
     case "jpg":
