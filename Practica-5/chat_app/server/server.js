@@ -34,6 +34,7 @@ app.get('/css/futurist.TTF', function(req, res){
   console.log("___________\n");
 });
 
+// no es necesario
 //app.get('/app.js', function(req, res){
 //  res.sendFile(__dirname + '/app.js');
 //  console.log("js requested")

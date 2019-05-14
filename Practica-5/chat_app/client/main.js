@@ -33,6 +33,12 @@ electron.app.on('ready', ()=>{
 
   });
 
+  socket.on('Welcome', msg =>{                      //on server message
+    //ipcMain.send('Welcome', msg);
+    console.log(msg)
+    win.webContents.send('Welcome', msg);
+  });
+
   socket.on('new_message', msg => {
   //when a new message is received, print it in display element
   //ipcMain.send('new_message', msg);

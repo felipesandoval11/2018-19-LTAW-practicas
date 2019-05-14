@@ -37,6 +37,7 @@ function main() {
   ipcRenderer.on('Welcome', (event,msg) => {
     display.innerHTML += msg;
     display.innerHTML += ("\n");
+    console.log("recibi LA BIENVENIDA");
   });
 
   ipcRenderer.on('new_message', (event,msg) => {
