@@ -110,14 +110,41 @@ div.log{
   text-align: center;
 }
 
+div.factura{
+  font-size: 140%;
+  color: black;
+  text-align: center;
+}
+
 span#user{
   color: red;
   text-transform: uppercase;
 }
 
 form#ToPay{
+  font-size: 120%;
   text-align: center;
   font-family: titleSpecial;
+}
+
+input#comprar{
+    align-items: center;
+    background-color: #e62739;
+    border: none;
+    color: black;
+    font-family: title;
+    padding: 10px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+input#comprar:hover{
+  opacity: 1;
+  color: #e62739;
+  background-color: black;
 }
 
 table{
