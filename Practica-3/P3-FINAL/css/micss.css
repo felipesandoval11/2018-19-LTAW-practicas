@@ -115,6 +115,11 @@ span#user{
   text-transform: uppercase;
 }
 
+form#ToPay{
+  text-align: center;
+  font-family: titleSpecial;
+}
+
 table{
  padding-bottom: 20px;
 }
