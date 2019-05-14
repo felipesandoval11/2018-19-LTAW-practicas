@@ -1,4 +1,4 @@
-/*  CHAT SERVER for LTAW.
+/*  CHAT SERVER for LTAW PRACTICE 4.
     Made by Felipe Sandoval.
 */
 
