@@ -64,18 +64,6 @@ http.createServer((req, res) => {
               <div class="factura">
                 <p>
               `
-
-              /*`
-              </p>
-              </div>
-              <img id="icon" src="icon/creditcards.png">
-              <p id="footer"> <a href="https://github.com/felipesandoval11">
-                    © Felipe Sandoval
-                  </a>
-              </p>
-            </body>
-          </html>`*/
-
           req.on('data', chunk => {
               // Reading data and parsing it all.
               info_form = chunk.toString().split("&");
@@ -94,16 +82,16 @@ http.createServer((req, res) => {
                           + lastname_client + "<br />MAIL: " + mail_client
                           + "<br />PAYMENT: " + payment_client
               content += `
-                </p>
-                </div>
-                <img id="icon" src="icon/creditcards.png">
-                <p id="footer"> <a href="https://github.com/felipesandoval11">
-                      © Felipe Sandoval
-                    </a>
-                </p>
-                </body>
-            </html>
-            `
+                  </p>
+                  </div>
+                  <img id="icon" src="icon/creditcards.png">
+                  <p id="footer"> <a href="https://github.com/felipesandoval11">
+                        © Felipe Sandoval
+                      </a>
+                  </p>
+                  </body>
+              </html>
+              `
               res.statusCode = 200;
            });
 
