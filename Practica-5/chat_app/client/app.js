@@ -16,7 +16,7 @@ function main() {
       if (e.keyCode === 13) { // 13 is enter
         if (msg.value != ""){
           recieving = true;
-          ipcRenderer.send('send_chat_msg', msg.value);
+          ipcRenderer.send('send_chat_msg', "User: " + msg.value);
           console.log("Message sent.");
           msg.value = "";
         }
@@ -27,7 +27,7 @@ function main() {
 //  Sending message with event NEW_MESSAGE
     if (msg.value != ""){
       recieving = true;
-      ipcRenderer.send('new_message', msg.value);
+      ipcRenderer.send('new_message', "User: " + msg.value);
       console.log("Message sent.");
       msg.value = "";
     }
