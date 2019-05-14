@@ -4492,3 +4492,4 @@ Practica-5/chat_app/node_modules/readable-stream/node_modules/isarray/component.
 Practica-5/chat_app/node_modules/readable-stream/node_modules/isarray/index.js
 Practica-5/chat_app/node_modules/readable-stream/node_modules/isarray/package.json
 Practica-5/chat_app/node_modules/readable-stream/node_modules/isarray/README.md
+*.ts
