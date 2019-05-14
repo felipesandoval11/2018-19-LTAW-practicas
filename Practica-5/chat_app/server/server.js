@@ -1,4 +1,4 @@
-/*  CHAT SERVER for LTAW.
+/*  CHAT SERVER for LTAW PRACTICE 5.
     Made by Felipe Sandoval.
 */
 
@@ -34,10 +34,15 @@ app.get('/css/futurist.TTF', function(req, res){
   console.log("___________\n");
 });
 
+//app.get('/app.js', function(req, res){
+//  res.sendFile(__dirname + '/app.js');
+//  console.log("js requested")
+//});
+
 
 //  Lauching Server
-http.listen(3000, function(){
-  console.log('Listening on *:3000');
+http.listen(4500, function(){
+  console.log('Listening on *:4500');
   console.log("___________");
 });
 

@@ -24,7 +24,7 @@ electron.app.on('ready', ()=>{
 
  win.webContents.once('dom-ready', () => {
 
-  const socket = io('http://localhost:3000');
+  const socket = io('http://localhost:4500');
 
   socket.on('server_message', msg =>{                      //on server message
   //ipcMain.send('new_message', msg);
