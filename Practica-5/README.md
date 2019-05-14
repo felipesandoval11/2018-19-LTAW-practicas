@@ -10,9 +10,9 @@ node server.js
 
 Para ejecutar el cliente:
 entrar en carpeta CLIENT
-
-npm install electron npm install socket.io-client
-npm install express, npm install socket.io
+npm install electron
+npm install socket.io-client
+npm install socket.io
 
 Luego:
 
