@@ -10,6 +10,14 @@ from mi_tienda.models import Product
 def home_view (request):
     return render(request, "index.html", {})
 
+# OTRA MANERA DE DECLARAR
+#def principal(request):
+#    html = open('mi_tienda/pagina1.html')
+#    return HttpResponse(html)
+
+def products (request):
+    return render(request, "art1.html", {})
+
 def list(request):
     objects = Product.objects.all()
     html = "<p>Listado de articulos</p>"

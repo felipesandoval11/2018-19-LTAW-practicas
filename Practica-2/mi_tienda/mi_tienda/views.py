@@ -13,6 +13,11 @@ def mi_producto(request, param):
 	html = "Acceso a producto: %i" % numero;
 	return HttpResponse(html)
 
+# OTRA MANERA DE HACERLO
+#def principal(request):
+#    html = open('mi_tienda/pagina1.html')
+#    return HttpResponse(html)
+
 def index(request):
     return render(request, 'main.html', {'user':'felipsandoval11'})
 
