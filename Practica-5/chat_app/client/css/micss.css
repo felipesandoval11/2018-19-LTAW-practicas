@@ -81,6 +81,11 @@ span#user{
   color: #c43235;
   text-transform: uppercase;
 }
+p#instructions{
+  text-align: center;
+  font-family: titleSpecial;
+  font-size: 130%;
+}
 
 button#send:hover{
   opacity: 1;
