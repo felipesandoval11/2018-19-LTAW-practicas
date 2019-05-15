@@ -20,3 +20,10 @@ PARA ARRANCAR
 python manage.py runserver
 
 y accedo a http://127.0.0.1:8000/
+
+
+PARA LEER PRODUCTOS DE SQL
+
+python manage.py shell
+from mi_tienda.models import Product
+productos = Product.objects.all()

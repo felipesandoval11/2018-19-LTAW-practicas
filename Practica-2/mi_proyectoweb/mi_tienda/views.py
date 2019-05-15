@@ -20,8 +20,8 @@ def products (request, param):
 
 def list(request):
     objects = Product.objects.all()
-    html = "<p>Listado de articulos</p>"
+    html = "<p>ALL THE ARTICLES</p>"
     for elt in objects:
-        print(elt.name)
-        html += '<p>'+ elt.name + ' ' + str(elt.price) + '<p>'
+     print(elt.name)
+     html += '<p>'+ "PRODUCT NAME: " + elt.name + ' STOCK: ' + str(elt.stock) + " PRICE: " + str(elt.price) + '<p>'
     return HttpResponse(html)
