@@ -1,1 +1,3 @@
-console.log("hola")
+function main(){
+  console.log("hola")
+}

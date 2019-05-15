@@ -22,7 +22,16 @@ python manage.py runserver
 y accedo a http://127.0.0.1:8000/
 
 
-PARA LEER PRODUCTOS DE SQL
+SI SE CREA UNA NUEVA CLASE
+python manage.py makemigrations
+python manage.py migrate
+
+PARA AGREGAR PRODUCTOS DE SQLITE
+python manage.py shell
+from mi_tienda.models import ___
+p1 = Product(name="fpga", stock=3, price=6.3)
+
+PARA LEER PRODUCTOS DE SQLITE
 
 python manage.py shell
 from mi_tienda.models import Product
