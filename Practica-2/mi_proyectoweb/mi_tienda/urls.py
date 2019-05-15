@@ -1,9 +1,11 @@
 from django.conf.urls import url
+from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_view),
     url(r'^index', views.home_view),
-    url(r'^art1', views.products),
+    url(r'^art(\d{2})$', views.products),
     url(r'^list', views.list),
 ]
