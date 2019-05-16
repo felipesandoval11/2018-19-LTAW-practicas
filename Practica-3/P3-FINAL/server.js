@@ -112,6 +112,7 @@ http.createServer((req, res) => {
         if (value_cookie.length > 1){
           value_cookie = value_cookie[1];
           value_cookie = value_cookie.split("=")[1];
+          value_cookie = [value_cookie];
         }else{
           value_cookie = [];
         }
@@ -197,7 +198,7 @@ http.createServer((req, res) => {
   fs.readFile(filename, (err, data) => {
     if (err) {
       res.writeHead(404, {'Content-Type': mime});
-      return res.end("404 Not Found " + q.pathname +
+      return res.end("404 Not Found. YOU MAY NEED TO LOG IN FIRST!" + q.pathname +
                      'please go to /index.html');
     }
   res.writeHead(200, {'Content-Type': mime});
