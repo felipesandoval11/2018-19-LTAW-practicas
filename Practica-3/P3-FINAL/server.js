@@ -113,60 +113,70 @@ http.createServer((req, res) => {
           value_cookie = value_cookie[1];
           value_cookie = value_cookie.split("=")[1];
         }else{
-          value_cookie = '';
+          value_cookie = [];
         }
         console.log("La Cookie: " + cookie);
         console.log(value_cookie);
         switch (pathname) {
           case "/buy1.html":
-            value_cookie = value_cookie + 'Baz1'
+            value_cookie.push('baz1');
             res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
             break;
           case "/buy2.html":
-            value_cookie = value_cookie + ',Baz2'
+            value_cookie.push('baz2');
             res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("2");
             break;
           case "/buy3.html":
+            value_cookie.push('baz3');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("3");
             break;
           case "/buy4.html":
+            value_cookie.push('baz4');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
             break;
           case "/buy5.html":
+            value_cookie.push('baz5');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("5");
             break;
           case "/buy6.html":
+            value_cookie.push('baz6');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("6");
             break;
           case "/buy7.html":
+            value_cookie.push('baz7');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("7");
             break;
           case "/buy8.html":
+            value_cookie.push('baz8');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("8");
             break;
           case "/buy9.html":
+            value_cookie.push('baz9');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("9");
             break;
           case "/buy10.html":
+            value_cookie.push('baz10');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("10");
             break;
           case "/buy11.html":
+            value_cookie.push('baz11');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("11");
             break;
           case "/buy12.html":
+            value_cookie.push('baz12');
+            res.setHeader('Set-Cookie', 'cart=' + value_cookie);
             filename = "./index.html";
-            console.log("12");
             break;
           default:
             break;
